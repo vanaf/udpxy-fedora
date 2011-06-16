@@ -86,7 +86,7 @@ fi
 
 
 %changelog
-* Sun May 22 2011 Ivan Afonichev <ivan.afonichev@gmail.com> - 1.0.19-2
+* Fri Jun 17 2011 Ivan Afonichev <ivan.afonichev@gmail.com> - 1.0.19-2
 - init script reverted for compatibility
 - options moved to sysconfdir
 - systemd type now 'forking'
