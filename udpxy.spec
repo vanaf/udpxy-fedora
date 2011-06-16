@@ -2,7 +2,7 @@
 
 Name:           udpxy
 Version:        1.0.19
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        UDP-to-HTTP multicast traffic relay daemon
 
 Group:          Applications/Internet
@@ -13,6 +13,8 @@ Source1:        %{name}.service
 Source2:        %{name}.init
 Source3:        %{name}.sysconfig
 
+#https://sourceforge.net/tracker/?func=detail&aid=3317594&group_id=214718&atid=1030796
+Patch0:		%{name}.mime.patch
 
 BuildRequires:  systemd-units
 
@@ -27,6 +29,7 @@ to the requesting HTTP client.
 
 %prep
 %setup -q -n %{name}-%{realversion}
+%patch0 -p0
 
 chmod a-x CHANGES
 sed -i "s|CFLAGS += -W -Wall -Werror --pedantic|CFLAGS += %{optflags}|g" Makefile
@@ -86,6 +89,9 @@ fi
 
 
 %changelog
+* Fri Jun 17 2011 Ivan Afonichev <ivan.afonichev@gmail.com> - 1.0.19-3
+- Added mime-type patch
+
 * Fri Jun 17 2011 Ivan Afonichev <ivan.afonichev@gmail.com> - 1.0.19-2
 - init script reverted for compatibility
 - options moved to sysconfdir
